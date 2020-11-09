@@ -1,0 +1,27 @@
+{
+  "name": "box-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL Tutorials",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server": "^2.19.0",
+    "apollo-server-express": "^2.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Justice-Chatbot-Limited/box-graphql.git"
+  },
+  "author": "Chris Matabaro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Justice-Chatbot-Limited/box-graphql/issues"
+  },
+  "homepage": "https://github.com/Justice-Chatbot-Limited/box-graphql#readme"
+}
