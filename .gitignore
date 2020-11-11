@@ -2,6 +2,7 @@
 ### Node ###
 # VS code
 .vscode
+package-lock.json
 
 # Logs
 logs
