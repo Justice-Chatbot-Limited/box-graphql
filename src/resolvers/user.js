@@ -4,10 +4,14 @@ import { AuthenticationError, UserInputError } from "apollo-server";
 // import models from "../models";
 import { isAdmin } from "./authorization";
 
-const createToken = async (user, secret, expiresIn) => {
+// const createToken = async (user, secret, expiresIn) => {
+//   const { id, email, username, role } = user;
+//   return await jwt.sign({ id, email, username, role }), secret, { expiresIn };
+// };
+const createToken = (user, secret, expiresIn) => {
   const { id, email, username, role } = user;
-  return await jwt.sign({ id, email, username, role }), secret, { expiresIn };
-};
+  return jwt.sign({ id, email, username, role }, secret, { expiresIn });
+}; 
 
 export default {
   Query: {
@@ -50,8 +54,8 @@ export default {
       if (!isValid) {
         throw new AuthenticationError("Invalid password.");
       }
-
-      return { token: createToken(user, secret, "30m") };
+    
+      return { token: createToken(user, secret, "30m") }; 
     },
     deleteUser: combineResolvers(
       isAdmin,

@@ -1,16 +1,10 @@
 import Sequelize from "sequelize";
+import dotenv from "dotenv";
+dotenv.config(); 
 
-// const sequelize = new Sequelize(
-//   process.env.DATABASE,
-//   process.env.DATABASE_USER,
-//   process.env.DATABASE_PASSWORD,
-//   {
-//     dialect: "postgres",
-//   }
-// );
-// const { DATABASE, DATABASE_USER, DATABASE_PASSWORD } = process.env
+const { DATABASE, DATABASE_USER, DATABASE_PASSWORD } = process.env
 
-const sequelize = new Sequelize("boxgraphqldb", "chris", "postgres", {
+const sequelize = new Sequelize(DATABASE, DATABASE_USER, DATABASE_PASSWORD, {
   dialect: "postgres",
   pool: {
     max: 10,
