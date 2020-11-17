@@ -2,9 +2,9 @@ import Sequelize from "sequelize";
 import dotenv from "dotenv";
 dotenv.config(); 
 
-const { DATABASE, DATABASE_USER, DATABASE_PASSWORD } = process.env
+const { DATABASE, DATABASE_USER, DATABASE_PASSWORD, TEST_DATABASE } = process.env
 
-const sequelize = new Sequelize(DATABASE, DATABASE_USER, DATABASE_PASSWORD, {
+const sequelize = new Sequelize(DATABASE, DATABASE_USER || TEST_DATABASE, DATABASE_PASSWORD, {
   dialect: "postgres",
   pool: {
     max: 10,
