@@ -3,11 +3,13 @@ import jwt from "jsonwebtoken";
 import cors from "cors";
 import express from "express";
 import http from "http";
+import DataLoader from 'dataloader';
 import { ApolloServer, AuthenticationError } from "apollo-server-express";
 
 import schema from "./schema";
 import resolvers from "./resolvers";
 import models, { sequelize } from "./models";
+import loaders from './loaders';
 
 dotenv.config();
 
@@ -26,6 +28,7 @@ const getMe = async (req) => {
     }
   }
 };
+
 
 const server = new ApolloServer({
   introspection: true,
@@ -57,6 +60,11 @@ const server = new ApolloServer({
         models,
         me,
         secret: process.env.SECRET,
+        loaders: {
+          user: new DataLoader(keys =>
+            loaders.user.batchUsers(keys, models),
+          ),
+        },
       };
     }
   },
